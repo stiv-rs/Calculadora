@@ -1,18 +1,22 @@
-<div class="conta">
+<div class="container">
   <div class="row">
     <div class="col">
-      <div style="text-align: center">
-        <h1>Listado de personas</h1>
-        <button class='btn btn-primary' [disabled] = 'deshabilitar' (click)='agregarPersona()'>Agregar persona</button>
-        <p>{{mensaje}}</p>
+      <h1>Listado de Personas</h1>
+      <button class='btn btn-primary' 
+        [disabled]='deshabilitar'
+        (click)='agregarPersona()'>Agregar Persona</button>
+
+        <p *ngIf="mostrar; else sinPersona">{{mensaje}} con el título de {{titulo}}</p>
+        <ng-template #sinPersona>
+          <p>No se ha agregado ninguna persona</p>
+        </ng-template>
+
         <app-persona></app-persona>
 
-        <label>Titulo Persona</label>
-        <input type="text" class="form_control" [(ngModel]="titulo">
-        {{titulo}}
-
-
-      </div>
+      <label>Título Persona</label>
+      <input type="text" class='form-control' 
+        [(ngModel)]='titulo' >
+      {{titulo}}
     </div>
   </div>
 </div>
